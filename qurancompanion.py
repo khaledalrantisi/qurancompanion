@@ -570,10 +570,11 @@ MESSAGES = [
 
 def fmt_msg(lang):
     msg = random.choice(MESSAGES)
-    t = f"*A Reminder for You*\n\n{msg['arabic']}\n\n"
-    if lang != "Arabic":
-        translation = msg.get(lang, msg.get("English", ""))
-        t += f"_{translation}_\n\n"
+    if lang == "Arabic":
+        text = msg["arabic"]
+    else:
+        text = msg.get(lang, msg.get("English", ""))
+    t = f"*A Reminder for You*\n\n{text}\n\n"
     t += f"{SEP}\n{FOOTER}"
     return t
 
